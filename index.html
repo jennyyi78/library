@@ -2,12 +2,34 @@
 <html lang="en">
 <meta charset="UTF-8">
 <title>Library</title>
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="initial-scale=1">
 <link rel="stylesheet" href="style.css">
 
 <body>
     <div class="main-container">
-
+        <div class="header">Library</div>
+        <div class="add-book-container">
+            <button class="add-book">Add Book</button>
+        </div>
+        <div class="modal">
+            <div class="modal-content">
+                <span class="close-btn">&times;</span>
+                <form class="form">
+                    <label for="title">Title:</label><br>
+                    <input type="text" id="title" name="title"><br>
+                    <label for="author">Author:</label><br>
+                    <input type="text" id="author" name="author"><br>
+                    <label for="pages">Number of Pages:</label><br>
+                    <input type="text" id="pages" name="pages"><br>
+                    <label for="hasRead">Read:</label>
+                    <input type="checkbox" id="hasRead" name="hasRead"><br>
+                    <input type="button" id="submit" value="Submit">
+                </form>
+            </div>
+        </div>
+        <div class="book-list">
+            
+        </div>
     </div>
 </body>
 <script src="script.js"></script>
