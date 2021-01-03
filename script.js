@@ -2,39 +2,42 @@ let library = [];
 const display = document.querySelector(".book-list");
 const form = document.querySelector(".form");
 
+function updateLocalStorage() {
+    window.localStorage.setItem("books", JSON.stringify(library));
+}
+
 function Book(title, author, pages, hasRead) {
     this.title = title;
     this.author = author;
     this.pages = pages + " pages";
     this.hasRead = hasRead;
-    this.order = null; 
 
 }
 
-Book.prototype.changeStatus = function () {
-    if(this.hadRead === "Read") {
-        this.hadRead = "Not Read";
+function updateStatus(book, hasReadCell) {
+    if (book.hasRead === "Read") {
+        book.hasRead = "Not Read";
     } else {
-        this.hadRead = "Read";
+        book.hasRead = "Read";
     }
+    updateLocalStorage();
+    hasReadCell.textContent = book.hasRead;
+    
 };
 
 function addBookToLibrary(book) {
     library.push(book);
-    book.order = library.length - 1;
+    updateLocalStorage();
 }
 
-function updateStatus(status) {
-    console.log(status.textContent);
-    if(status.textContent === "Read") {
-        status.textContent = "Not Read";
-    } else if (status.textContent === "Not Read") {
-        status.textContent = "Read";
-    }
-
+function removeBookFromLibrary(book, entry) {
+    let index = library.indexOf(book);
+    library.splice(index, 1);
+    updateLocalStorage();
+    entry.style.display = "none";
 }
 
-function displayBook(item) {
+function displayBook(book) {
 
     const entry = document.createElement("div");
     entry.classList.toggle("book");
@@ -46,10 +49,10 @@ function displayBook(item) {
     const pagesCell = document.createElement("li");
     const hasReadCell = document.createElement("li");
 
-    const titleText = document.createTextNode(item.title);
-    const authorText = document.createTextNode(item.author);
-    const pagesText = document.createTextNode(item.pages);
-    const hasReadText = document.createTextNode(item.hasRead);
+    const titleText = document.createTextNode(book.title);
+    const authorText = document.createTextNode(book.author);
+    const pagesText = document.createTextNode(book.pages);
+    const hasReadText = document.createTextNode(book.hasRead);
 
 
     const options = document.createElement("ol");
@@ -64,17 +67,14 @@ function displayBook(item) {
     removeCell.classList.toggle("option");
     changeStatus.classList.toggle("book-options");
     remove.classList.toggle("book-options");
-    
+
 
     changeStatus.addEventListener("click", function () {
-        updateStatus(hasReadCell);
-        // change book property instead later
+        updateStatus(book, hasReadCell);
     });
 
     remove.addEventListener("click", function () {
-        library.splice(item.order, 1);
-        // to simulate - temporary
-        entry.style.display = "none";
+        removeBookFromLibrary(book, entry);
     });
 
     changeStatus.appendChild(changeText);
@@ -107,12 +107,15 @@ function displayBook(item) {
 }
 
 function displayLibrary() {
-    library.forEach(function (item) {
-        displayBook(item);
+
+    library.forEach(function (book) {
+        displayBook(book);
     });
+
+
 }
 
-function updateLibrary() {
+function createBook() {
     let progress;
     if (form.hasRead.checked) {
         progress = "Read";
@@ -125,13 +128,9 @@ function updateLibrary() {
 }
 
 
-
-let b = new Book("Hunter x Hunter", "Yoshihiro Togashi", 100, "Read");
-let c = new Book("Harry Potter", "JK Rowling", 600, "Not Read");
-addBookToLibrary(b);
-addBookToLibrary(c);
-
+library = JSON.parse(window.localStorage.getItem('books'));
 displayLibrary();
+
 
 const addBtn = document.querySelector(".add-book");
 const modal = document.querySelector(".modal");
@@ -147,8 +146,9 @@ closeBtn.addEventListener("click", () => {
 
 const submitBtn = document.querySelector("#submit");
 submitBtn.addEventListener("click", function () {
-    updateLibrary();
+    createBook();
     form.reset();
     modal.style.display = "none";
 });
+
 

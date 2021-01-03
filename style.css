@@ -1,5 +1,6 @@
 body {
     margin: 0;
+    background-color: #F1DABF;
 }
 
 .main-container {
@@ -10,10 +11,12 @@ body {
 }
 
 .header {
-    font-size: 50px;
+    font-size: 2.5vw;
     margin-right: auto;
     margin-left: auto;
     margin-top: 40px;
+    font-family: monospace;
+    font-weight: bold;
 
 }
 
@@ -25,21 +28,61 @@ body {
     width: 200px;
     height: 40px;
     float: right;
-    font-size: 20px;
+    font-size: 1vw;
     margin-right: 30px;
+    font-family:'Courier New', Courier, monospace;
+    background-color: white;
 }
 
 .modal {
     display: none;
     position: absolute;
-    background-color: red;
+    background-color: rgb(161, 150, 150);
     margin-left: auto;
     margin-right: auto;
     margin-top: 200px;
     left: 0;
     right: 0;
     width: 600px;
-    height: 400px;
+    height: 430px;
+    border-radius: 10px;
+    z-index: 2;
+    box-shadow: 5px 7px 5px;
+}
+
+.form {
+    margin-left: 30px;
+   
+}
+
+label {
+    font-size: 24px;
+    line-height: 55px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+input {
+    width: 530px;
+    height: 30px;
+    border-radius: 10px;
+}
+
+#hasRead {
+    position: absolute;
+    margin-top: 14px;
+    margin-left: -140px;
+    left: 0;
+    right: 0;
+   
+}
+
+#submit {
+    width: 100px;
+    height: 40px;
+    margin-left: 220px;
+    margin-top: 20px;
+    font-size: 23px;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 .close-btn {
@@ -50,14 +93,18 @@ body {
 
 .book {
     border: solid;
+    border-color: black;
+    border-width: 8px;
     height: 380px;
     text-align: center;
+    background-color: #007991;;
+    opacity: 90%;
+    font-family:'Courier New', Courier, monospace;
 }
 
 ol {
     margin-right: 30px;
     list-style: none;
-    
 }
 
 .option {
@@ -89,16 +136,19 @@ ol {
 
 .book-list {
     display: grid;
-    margin-left: 60px;
-    margin-right: 60px;
+    margin-left: 40px;
+    margin-right: 40px;
     grid-template-columns: repeat(5, 1fr);
-    grid-gap: 50px;
+    grid-gap: 40px;
 }
 
 .book-options {
     height: 40px;
-    width: 110px;
-    margin-left: 5px;
-    margin-right: 5px;
-    margin-top: 80px;
+    width: 95px;
+    margin-left: 14px;
+    margin-right: 14px;
+    margin-top: 20px;
+    font-size: 0.7vw;
+    background-color: white;
+    font-family: 'Segoe UI';
 }
