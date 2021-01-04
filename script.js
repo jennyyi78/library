@@ -124,13 +124,7 @@ function createBook() {
 }
 
 
-library = JSON.parse(window.localStorage.getItem('books'));
-if (library !== null) {
-    displayLibrary();
-} else {
-    library = [];
-}
-
+library = JSON.parse(window.localStorage.getItem('books')) || [];
 
 const addBtn = document.querySelector(".add-book");
 const modal = document.querySelector(".modal");
