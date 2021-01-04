@@ -127,6 +127,8 @@ function createBook() {
 library = JSON.parse(window.localStorage.getItem('books'));
 if (library !== null) {
     displayLibrary();
+} else {
+    library = [];
 }
 
 
