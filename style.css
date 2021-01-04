@@ -137,6 +137,7 @@ input:focus {
     opacity: 85%;
     font-family: Helvetica, sans-serif;
     box-shadow: 2px 2px 5px black;
+    position: relative;
 }
 
 ol {
@@ -185,10 +186,11 @@ ol {
 }
 
 .change-status {
+    position: absolute;
+    bottom: 20px;
     height: 40px;
     width: 120px;
-    margin-left: 10px;
-    margin-top: 10px;
+    margin-left: -55px;
     border: solid;
     border-color: white;
     color: white;
