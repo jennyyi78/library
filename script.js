@@ -55,18 +55,15 @@ function displayBook(book) {
     const hasReadText = document.createTextNode(book.hasRead);
 
 
-    const options = document.createElement("ol");
-    const changeCell = document.createElement("li");
-    const removeCell = document.createElement("li");
+    const changeCell = document.createElement("div");
+    const removeCell = document.createElement("div");
     const changeStatus = document.createElement("button");
     const remove = document.createElement("button");
     const changeText = document.createTextNode("Change Status");
-    const removeText = document.createTextNode("Remove");
+    const removeText = document.createTextNode("x");
 
-    changeCell.classList.toggle("option");
-    removeCell.classList.toggle("option");
-    changeStatus.classList.toggle("book-options");
-    remove.classList.toggle("book-options");
+    changeStatus.classList.toggle("change-status");
+    remove.classList.toggle("remove-btn");
 
 
     changeStatus.addEventListener("click", function () {
@@ -82,8 +79,6 @@ function displayBook(book) {
 
     changeCell.appendChild(changeStatus);
     removeCell.appendChild(remove);
-    options.appendChild(changeCell);
-    options.appendChild(removeCell);
 
     titleCell.appendChild(titleText);
     authorCell.appendChild(authorText);
@@ -100,8 +95,9 @@ function displayBook(book) {
     list.appendChild(pagesCell);
     list.appendChild(hasReadCell);
 
+    entry.appendChild(removeCell);
     entry.appendChild(list);
-    entry.appendChild(options);
+    entry.appendChild(changeCell);
     display.appendChild(entry);
 
 }
