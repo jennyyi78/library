@@ -22,7 +22,7 @@ body {
     height: 90px;
     padding-top: 40px;
     padding-left: 80px;
-    box-shadow: 2px 2px 8px gray;
+    box-shadow: 2px 2px 8px rgb(70, 66, 66);
     border-bottom: solid;
     border-color: white;
     border-width: 15px;
@@ -140,6 +140,10 @@ input:focus {
     position: relative;
 }
 
+.book:hover {
+    transform: scale(1.05);
+}
+
 ol {
     margin-right: 30px;
     list-style: none;
@@ -197,7 +201,7 @@ ol {
     font-size: 0.8vw;
     background-color: #007991;
     font-family: Helvetica, sans-serif;
-    box-shadow: 3px 3px 5px gray;
+    box-shadow: 2px 2px 5px rgb(53, 50, 50);
 }
 
 .change-status:focus {
